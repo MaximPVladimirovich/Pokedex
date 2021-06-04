@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include(`./partials/head`) %>
+
+    <body>
+        <header>
+            <h2 class="title">Pokedex</h2>
+        </header>
+
+        <% pokemons.forEach(function(monster) { %>
+            <% let id=pokemons.indexOf(monster) %>
+                <a href="/index/<%=id%>">
+                    <p>
+                        <%=monster.name%>
+                    </p>
+                    <img src="<%=monster.img%>">
+                </a>
+                <% }) %>
+
+                    <%- include(`./partials/footer`) %>
+    </body>
+
+</html>

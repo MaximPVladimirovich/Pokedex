@@ -1,5 +1,5 @@
 const express = require(`express`);
-const pokemon = require(`./models/pokemon`)
+const pokemons = require(`./models/pokemon`)
 const app = express();
 const port = 3000;
 
@@ -8,8 +8,20 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(__dirname + `/public`));
 
 
-app.get(`/`, (req, res) => {
-    res.send(pokemon)
+app.get(`/index`, (req, res) => {
+    res.render(`index.ejs`,
+        { pokemons })
+})
+app.post(`/new`, (req, res) => {
+    pokemons.push(req.body)
+})
+
+
+app.get(`/index/:id`, (req, res) => {
+    res.render(`show.ejs`,
+        {
+            pokemon: pokemons[req.params.id]
+        })
 })
 
 app.listen(port)
