@@ -8,12 +8,17 @@
             <%= pokemon.name %>
         </p>
         <img src="<%=pokemon.img%>">
-        <p>
-            <%= pokemon.stats %>
-        </p>
-        <p>
-            <%= pokemon.moves %>
-        </p>
+
+        <form action="/index/<%=index%>?_method=DELETE" method="POST">
+            <input type="submit" value="DELETE">
+        </form>
+
+        </a>
+        <a href="/index/<%=index%>/edit">
+            <p>
+                Edit
+            </p>
+        </a>
 
     </body>
 
