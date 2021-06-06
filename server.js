@@ -21,13 +21,20 @@ app.get(`/index`, (req, res) => {
 })
 // Add news poke to index
 app.post(`/index`, (req, res) => {
-    console.log(req.body);
+
     pokemons.push(req.body)
-    res.redirect(`/index`)
+
 })
 // Routes to create page
 app.get(`/index/create`, (req, res) => {
     res.render(`create.ejs`)
+})
+
+// render edit page
+app.get(`/index/:id/edit`, (req, res) => {
+    res.render(`edit.ejs`, {
+        pokemon: pokemons[req.params.id], index: req.params.id
+    })
 })
 
 // edit route
@@ -49,12 +56,7 @@ app.get(`/index/:id`, (req, res) => {
         })
 })
 
-// render edit page
-app.get(`/index/:id/edit`, (req, res) => {
-    res.render(`edit.ejs`, {
-        pokemon: pokemons[req.params.id], index: req.params.id
-    })
-})
+
 
 app.listen(port)
 
