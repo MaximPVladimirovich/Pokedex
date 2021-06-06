@@ -7,9 +7,8 @@
 
 <body>
     <div id="edit-container">
-        <form action="/index/<%=index%>?_method=PUT" method="POST">
-            <!--  NOTE: the form is pre-populated with values for the server-->
 
+        <form action="/index/<%=index%>?_method=PUT" method="POST">
             <!-- loops through keys and values of pokemon -->
             <% for (let [key, value] of Object.entries(pokemon)) { %>
 
@@ -18,7 +17,9 @@
 
                     <!-- prints key -->
                     <button>
-                        <%=key%>
+                        <h2>
+                            <%=key%>
+                        </h2>
                     </button>
 
                     <!-- looks for object in stats-->
@@ -26,9 +27,11 @@
 
                         <!-- start of looping through stats, moves, damages, misc  -->
                         <%if(typeof value[stat]===`object`) {%>
-                            <h2>
-                                <%=stat%>
-                            </h2>
+                            <button id="stat-dropDown">
+                                <h2>
+                                    <%=stat%>
+                                </h2>
+                            </button>
                             <!-- prints values of value[stat] object -->
                             <%for(let obj in value[stat]) {%>
 
@@ -39,29 +42,31 @@
                                     <%for(let objValue in value[stat][obj]) {%>
 
                                         <!-- loops through last nested objects -->
-                                        <%=objValue%> <input type="text" name="name"
+
+                                        <%=objValue%> <input type="text" name="objValue"
                                                 value="<%=value[stat][obj][objValue]%>" /><br />
+
                                             <%}%>
                                                 <% } else { %>
-                                                    <%=obj%> <input type="text" name="name"
+                                                    <%=obj%><input type="text" name="obj"
                                                             value="<%=value[stat][obj]%>" /><br />
                                                         <%}%>
                                                             <% } %>
                                                                 <%} else { %>
-                                                                    <%=stat%> <input type="text" name="name"
+                                                                    <%=stat%> <input type="text" name="stat"
                                                                             value="<%=value[stat]%>" /><br />
-                                                                        %
                                                                         <% }%>
                                                                             <% } %>
                                                                                 <%} else {%>
                                                                                     <%=key%> <input type="text"
-                                                                                            name="name"
+                                                                                            name="<%=key%>"
                                                                                             value="<%=value%>" /><br />
                                                                                         <% }%>
                                                                                             <% } %>
                                                                                                 <input type="submit"
                                                                                                     name=""
                                                                                                     value="Submit Changes" />
+
         </form>
     </div>
 

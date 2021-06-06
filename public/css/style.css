@@ -5,3 +5,26 @@
   box-sizing: border-box;
   background-color: beige;
 }
+
+body {
+  display: grid;
+  height: 100vh;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: 140 auto 100px ;
+  grid-template-areas: " . . header header . ."
+  ". container container container container . "
+  "footer footer footer footer footer footer";
+}
+
+header {
+  grid-area: header;
+}
+
+#container {
+  grid-area: container;
+}
+
+
+footer {
+  grid-area: footer;
+}
