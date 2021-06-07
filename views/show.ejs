@@ -4,20 +4,24 @@
 <%- include(`./partials/head`) %>
 
     <body>
-        <p>
-            <%console.log(pokemon.name) %>
-        </p>
-        <img src="<%=pokemon.img%>">
+        <div id="showContainer ">
+            <header>
+                <div id="title">
+                    <%=pokemon.name%>
+                </div>
 
-        <form action="/index/<%=index%>?_method=DELETE" method="POST">
-            <input type="submit" value="DELETE">
-        </form>
-        <a href="/index/<%=index%>/edit">Edit</a>
+            </header>
 
-        </a>
+            <div id="showCard">
+                <div id="showImg"> <img src="<%=pokemon.img%>"></div>
+                <form action="/index/<%=index%>?_method=DELETE" method="POST">
+                    <input type="submit" value="DELETE">
+                </form>
+                <a href="/index/<%=index%>/edit">Edit</a>
+                </a>
+            </div>
 
-
-
+        </div>
     </body>
 
 </html>

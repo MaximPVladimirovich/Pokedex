@@ -5,22 +5,30 @@
 
     <body>
         <header>
-            <h2 class="title">Pokedex</h2>
-            <a href="/index/create">Create newpokemon</a>
+            <div id="title">
+                Pokedex
+            </div>
+            <a href="/index/create">
+                <div id="create-btn">Create newpokemon</div>
+            </a>
+
         </header>
+        </div>
         <div id="container">
             <% pokemons.forEach(function(monster) { %>
                 <% let id=pokemons.indexOf(monster) %>
-                    <a href="/index/<%=id%>">
-                        <p>
-                            <%=monster.name%>
-                                <img src="<%=monster.img%>">
-                        </p>
-                    </a>
+                    <div id="monster">
+                        <div id="monsterName">
+                            <a href="/index/<%=id%>">
+                                <%=monster.name%>
+                            </a>
+                        </div>
+                        <div id="monsterImg">
+                            <img src="<%=monster.img%>">
+                        </div>
+                    </div>
                     <% })%>
         </div>
-
-
     </body>
 
 </html>

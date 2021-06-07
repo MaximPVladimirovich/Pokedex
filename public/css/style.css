@@ -3,14 +3,28 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-color: beige;
+  background-color: white
+  
+
+ 
+}
+a  {
+  text-decoration: none;
+  color: black;
+  opacity: 80%;
+}
+a:hover {
+  color: purple;
+  text-decoration: underline;
 }
 
 body {
   display: grid;
   height: 100vh;
+  font-family: 'Open Sans', sans-serif;
+ 
   grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: 140 auto 100px ;
+  grid-template-rows: auto auto 100px ;
   grid-template-areas: " . . header header . ."
   ". container container container container . "
   "footer footer footer footer footer footer";
@@ -18,12 +32,72 @@ body {
 
 header {
   grid-area: header;
+  place-self: center;
+}
+header #create-btn{
+ padding: 10px 0;
+  margin: 0 20px;
+  background-color: purple;
+  color: white;
+  font-size: 16px;
+  border-radius: 10px;
+  text-align: center;
+}
+#title {
+  padding: 20px;
+  font-size: 50px;
+  font-weight: 600;
 }
 
 #container {
   grid-area: container;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  justify-content: space-around;
 }
 
+#monster {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin-top: 50px;
+  padding: 10px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px 0 hsla(0, 0%, 0%, 0.15);
+}
+#showCard {
+  border-radius: 10px;
+  box-shadow: 0 5px 15px 0 hsla(0, 0%, 0%, 0.15);
+}
+
+#monsterName {
+  align-self: flex-start;
+  height: 30px;
+  margin: 10px 0;
+  margin-left: 10px;
+  background-color: white;
+}
+
+
+#monsterName a {
+  background-color: white;
+  font-size: 1.4em;
+}
+#monsterName a:visited{
+  text-decoration: none;
+}
+
+#monsterImg {
+  background-color: white;
+}
+
+#monsterImg img{
+
+  height:190px;
+  width: auto;
+}
 
 footer {
   grid-area: footer;
