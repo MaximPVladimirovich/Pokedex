@@ -6,7 +6,15 @@
 </head>
 
 <body>
-    <div id="edit-container">
+    <header>
+        <div id="title">
+            Edit <%=pokemon.name%>
+        </div>
+        <a href="/index">
+            <div id="create-btn">Home</div>
+        </a>
+    </header>
+    <div class="container">
 
         <form action="/index/<%=index%>?_method=PUT" method="POST">
             <!-- loops through keys and values of pokemon -->
@@ -16,22 +24,21 @@
                 <% if (typeof value===`object`) { %>
 
                     <!-- prints key -->
-                    <button>
-                        <h2>
-                            <%=key%>
-                        </h2>
-                    </button>
+                    <div class="catagory-btn">
+                        <%=key%>
+                    </div>
+
 
                     <!-- looks for object in stats-->
                     <% for(let stat in value) { %>
 
                         <!-- start of looping through stats, moves, damages, misc  -->
                         <%if(typeof value[stat]===`object`) {%>
-                            <button id="stat-dropDown">
-                                <h2>
-                                    <%=stat%>
-                                </h2>
-                            </button>
+
+                            <div class="catagory2-btn">
+                                <%=stat%>
+                            </div>
+
                             <!-- prints values of value[stat] object -->
                             <%for(let obj in value[stat]) {%>
 
@@ -42,30 +49,35 @@
                                     <%for(let objValue in value[stat][obj]) {%>
 
                                         <!-- loops through last nested objects -->
-
-                                        <%=objValue%> <input type="text" name="objValue"
-                                                value="<%=value[stat][obj][objValue]%>" /><br />
-
-                                            <%}%>
-                                                <% } else { %>
-                                                    <%=obj%><input type="text" name="obj"
+                                        <div class="input">
+                                            <%=objValue%> <input class="inputForm" type="text" name="objValue"
+                                                    value="<%=value[stat][obj][objValue]%>" /><br />
+                                        </div>
+                                        <%}%>
+                                            <% } else { %>
+                                                <div class="input">
+                                                    <%=obj%><input class="inputForm" type="text" name="obj"
                                                             value="<%=value[stat][obj]%>" /><br />
-                                                        <%}%>
-                                                            <% } %>
-                                                                <%} else { %>
-                                                                    <%=stat%> <input type="text" name="stat"
-                                                                            value="<%=value[stat]%>" /><br />
+                                                </div>
+                                                <%}%>
+                                                    <% } %>
+                                                        <%} else { %>
+                                                            <div class="input">
+                                                                <%=stat%> <input class="inputForm" type="text"
+                                                                        name="stat" value="<%=value[stat]%>" /><br />
+                                                            </div>
+                                                            <% }%>
+                                                                <% } %>
+                                                                    <%} else {%>
+                                                                        <div class="input">
+                                                                            <%=key%> <input class="inputForm"
+                                                                                    type="text" name="<%=key%>"
+                                                                                    value="<%=value%>" /><br />
+                                                                        </div>
                                                                         <% }%>
                                                                             <% } %>
-                                                                                <%} else {%>
-                                                                                    <%=key%> <input type="text"
-                                                                                            name="<%=key%>"
-                                                                                            value="<%=value%>" /><br />
-                                                                                        <% }%>
-                                                                                            <% } %>
-                                                                                                <input type="submit"
-                                                                                                    name=""
-                                                                                                    value="Submit Changes" />
+                                                                                <input id="submit-btn" type="submit"
+                                                                                    name="" value="Submit Changes" />
 
         </form>
     </div>

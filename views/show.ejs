@@ -4,24 +4,27 @@
 <%- include(`./partials/head`) %>
 
     <body>
-        <div id="showContainer ">
-            <header>
-                <div id="title">
-                    <%=pokemon.name%>
-                </div>
 
-            </header>
-
-            <div id="showCard">
-                <div id="showImg"> <img src="<%=pokemon.img%>"></div>
+        <header>
+            <div id="title">
+                <%=pokemon.name%>
+            </div>
+            <div class="navFlex">
                 <form action="/index/<%=index%>?_method=DELETE" method="POST">
-                    <input type="submit" value="DELETE">
+                    <input id="delete-btn" type="submit" value="DELETE">
                 </form>
-                <a href="/index/<%=index%>/edit">Edit</a>
-                </a>
+                <form action="/index/<%=index%>/edit">
+                    <input id="edit-btn" type="submit" value="EDIT">
             </div>
 
+        </header>
+
+        <div class="container">
+            <div id="showImg"> <img src="<%=pokemon.img%>"></div>
+
         </div>
+
+
     </body>
 
 </html>
