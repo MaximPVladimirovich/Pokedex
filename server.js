@@ -56,6 +56,7 @@ app.delete(`/index/:id`, (req, res) => {
 
 // update pokemon
 app.put(`/index/:id`, (req, res) => {
+
     pokemons[req.params.id] = req.body
     res.redirect(`/index`)
 })

@@ -16,68 +16,58 @@
     </header>
     <div class="container">
 
+        <!-- Display all pokemon data to update -->
         <form action="/index/<%=index%>?_method=PUT" method="POST">
+
             <!-- loops through keys and values of pokemon -->
             <% for (let [key, value] of Object.entries(pokemon)) { %>
-
-                <!-- if value is object -->
+                <!-- prints key -->
+                <div class="catagory-btn">
+                    <%=key%>
+                </div>
                 <% if (typeof value===`object`) { %>
+                    <!-- loop through 1st level objects -->
+                    <% for (let [key2, value2] of Object.entries(value)) {%>
+                        <%if (typeof value2===`object`) {%>
 
-                    <!-- prints key -->
-                    <div class="catagory-btn">
-                        <%=key%>
-                    </div>
+                            <%for (let [key3, value3] of Object.entries(value2)) {%>
+                                <%if(typeof value3===`object`) {%>
 
-
-                    <!-- looks for object in stats-->
-                    <% for(let stat in value) { %>
-
-                        <!-- start of looping through stats, moves, damages, misc  -->
-                        <%if(typeof value[stat]===`object`) {%>
-
-                            <div class="catagory2-btn">
-                                <%=stat%>
-                            </div>
-
-                            <!-- prints values of value[stat] object -->
-                            <%for(let obj in value[stat]) {%>
-
-                                <!-- check if any value in value[stat] is object -->
-                                <%if(typeof value[stat][obj]===`object`) {%>
-
-                                    <!-- loop through value[stat][obj] -->
-                                    <%for(let objValue in value[stat][obj]) {%>
-
-                                        <!-- loops through last nested objects -->
-                                        <div class="input">
-                                            <%=objValue%> <input class="inputForm" type="text" name="objValue"
-                                                    value="<%=value[stat][obj][objValue]%>" /><br />
-                                        </div>
-                                        <%}%>
-                                            <% } else { %>
-                                                <div class="input">
-                                                    <%=obj%><input class="inputForm" type="text" name="obj"
-                                                            value="<%=value[stat][obj]%>" /><br />
-                                                </div>
-                                                <%}%>
+                                    <%for(let [key4, value4] of Object.entries(value3)) {%>
+                                        <%if(typeof value4===`object` ) {%>
+                                            <!-- loop through objects -->
+                                            <% } else {%>
+                                                <%=key4%> <input class="inputForm" type="text" name="<%=key4%>"
+                                                        value="<%=value4%>" /><br />
                                                     <% } %>
-                                                        <%} else { %>
-                                                            <div class="input">
-                                                                <%=stat%> <input class="inputForm" type="text"
-                                                                        name="stat" value="<%=value[stat]%>" /><br />
-                                                            </div>
-                                                            <% }%>
-                                                                <% } %>
-                                                                    <%} else {%>
-                                                                        <div class="input">
-                                                                            <%=key%> <input class="inputForm"
-                                                                                    type="text" name="<%=key%>"
-                                                                                    value="<%=value%>" /><br />
-                                                                        </div>
-                                                                        <% }%>
+                                                        <%} %>
+                                                            <!-- check for objects -->
+                                                            <% } else { %>
+                                                                <%=key3%> <input class="inputForm" type="text"
+                                                                        name="<%=key3%>" value="<%=value3%>" /><br />
+                                                                    <% }%>
+                                                                        <%console.log(`key3`, key3, `value3`, value3) %>
                                                                             <% } %>
-                                                                                <input id="submit-btn" type="submit"
-                                                                                    name="" value="Submit Changes" />
+                                                                                <% } else {%>
+                                                                                    <%=key2%> <input class="inputForm"
+                                                                                            type="text" name="<%=key2%>"
+                                                                                            value="<%=value2%>" /><br />
+                                                                                        <% }%>
+                                                                                            <%} %>
+                                                                                                <!-- if not an object display data into input -->
+                                                                                                <% } else { %>
+                                                                                                    <input
+                                                                                                        class="inputForm"
+                                                                                                        type="text"
+                                                                                                        name="<%=key%>"
+                                                                                                        value="<%=value%>" /><br />
+                                                                                                    <%} %>
+                                                                                                        <% }%>
+                                                                                                            <input
+                                                                                                                id="submit-btn"
+                                                                                                                type="submit"
+                                                                                                                name=""
+                                                                                                                value="Submit Changes" />
 
         </form>
     </div>
